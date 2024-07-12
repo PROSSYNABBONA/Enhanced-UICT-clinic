@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UICT Clinic Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body class="bg-gray-100">
+
+    <header class="bg-white shadow">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="text-xl font-bold text-gray-800 mr-6">UICT CLINIC</div>
+                <div class="flex items-center ml-4">
+                    <div class="relative mr-4">
+                        <div class="bg-white p-2 rounded-full shadow-sm text-center">
+                            <i class="fas fa-user-md fa-lg text-primary"></i>
+                            <span
+                                class="absolute top-0 right-6 bg-red-500 text-white rounded-full px-2 py-1 text-xs">10</span>
+                        </div>
+                    </div>
+                    <div class="relative mr-4">
+                        <div class="bg-white p-2 rounded-full shadow-sm text-center">
+                            <i class="fas fa-notes-medical fa-lg text-success"></i>
+                            <span
+                                class="absolute top-0 right-6 bg-green-500 text-white rounded-full px-2 py-1 text-xs">10</span>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <div class="bg-white p-2 rounded-full shadow-sm text-center">
+                            <i class="fas fa-hospital-user fa-lg text-warning"></i>
+                            <span
+                                class="absolute top-0 right-6 bg-yellow-500 text-white rounded-full px-2 py-1 text-xs">10</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="flex items-center">
+                <div class="mr-4 text-gray-600">Welcome, Kyndikola Susan Kigenyi</div>
+                <div class="relative">
+                    <button class="btn btn-white dropdown-toggle" type="button" id="dropdownMenuButton"
+                        aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user-circle fa-2x"></i>
+                    </button>
+                    <div class="dropdown-menu absolute right-0 mt-2 py-2 w-48 bg-white border rounded-lg shadow-lg z-10 hidden"
+                        aria-labelledby="dropdownMenuButton">
+                        <a class="block px-4 py-2 text-gray-800 hover:bg-gray-100" href="#"
+                            onclick="showTab('dashboard')">Dashboard</a>
+                        <a class="block px-4 py-2 text-gray-800 hover:bg-gray-100" href="#"
+                            onclick="showTab('profile')">Profile</a>
+                        <a class="block px-4 py-2 text-gray-800 hover:bg-gray-100" href="#">Doctor</a>
+                        <a class="block px-4 py-2 text-gray-800 hover:bg-gray-100" href="#">Logout</a>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </header>
+
+    <div class="flex">
+        <!-- Sidebar -->
+        <!-- Sidebar -->
+        <aside class="w-1/5 bg-gray-800 min-h-screen p-6">
+            <nav class="text-white">
+                <ul>
+                    <li class="mb-4">
+                        <a href="dashboard.html" class="block py-2 px-4 rounded hover:bg-gray-700 text-white">
+                            <i class="fas fa-tachometer-alt text-white"></i> Dashboard
+                        </a>
+                    </li>
+                    <li class="mb-4">
+                        <a href="#" class="block py-2 px-4 rounded hover:bg-gray-700 text-white"
+                            onclick="toggleDropdown('patient')">
+                            <i class="fas fa-user-injured text-white"></i> Patient <i id="patientIcon"
+                                class="fas fa-plus text-white"></i>
+                        </a>
+                        <!-- Dropdown menu -->
+                        <ul id="patientDropdown" class="ml-4 hidden">
+                            <li class="mb-2">
+                                <a href="patient_list.html"
+                                    class="block py-2 px-4 rounded hover:bg-gray-700 text-white">
+                                    <i class="fas fa-list text-white"></i> Patient List
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="payments.html" class="block py-2 px-4 rounded hover:bg-gray-700 text-white">
+                                    <i class="fas fa-dollar-sign text-white"></i> Payments
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="case_manager.html"
+                                    class="block py-2 px-4 rounded hover:bg-gray-700 text-white">
+                                    <i class="fas fa-user-md text-white"></i> Case Manager
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="documents .html" class="block py-2 px-4 rounded hover:bg-gray-700 text-white">
+                                    <i class="fas fa-file-alt text-white"></i> Documents
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="mb-4">
+                        <a href="#" class="block py-2 px-4 rounded hover:bg-gray-700 text-white"
+                            onclick="toggleDropdown('schedule')">
+                            <i class="fas fa-calendar-alt text-white"></i> Schedule <i id="scheduleIcon"
+                                class="fas fa-plus text-white"></i>
+                        </a>
+                        <!-- Dropdown menu -->
+                        <ul id="scheduleDropdown" class="ml-4 hidden">
+                            <li class="mb-2">
+                                <a href="schedule_all.html"
+                                    class="block py-2 px-4 rounded hover:bg-gray-700 text-white">
+                                    <i class="fas fa-calendar-alt text-white"></i> All Schedule
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="schedule_holiday" class="block py-2 px-4 rounded hover:bg-gray-700 text-white">
+                                    <i class="fas fa-calendar-check text-white"></i> Holidays
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="mb-4">
+                        <a href="#" class="block py-2 px-4 rounded hover:bg-gray-700 text-white"
+                            onclick="toggleDropdown('appointments')">
+                            <i class="fas fa-calendar-check text-white"></i> Appointments <i id="appointmentsIcon"
+                                class="fas fa-plus text-white"></i>
+                        </a>
+                        <!-- Dropdown menu -->
+                        <ul id="appointmentsDropdown" class="ml-4 hidden">
+                            <li class="mb-2">
+                                <a href="all_appointments.html"
+                                    class="block py-2 px-4 rounded hover:bg-gray-700 text-white">
+                                    <i class="fas fa-list text-white"></i> All Appointments
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="todays_appointments.html"
+                                    class="block py-2 px-4 rounded hover:bg-gray-700 text-white">
+                                    <i class="fas fa-calendar-plus text-white"></i> Add New Appointment
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="todays_appointments.html"
+                                    class="block py-2 px-4 rounded hover:bg-gray-700 text-white">
+                                    <i class="fas fa-calendar-day text-white"></i> Today's Appointments
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="upcoming_appointments.html"
+                                    class="block py-2 px-4 rounded hover:bg-gray-700 text-white">
+                                    <i class="fas fa-calendar-week text-white"></i> Upcoming Appointments
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="calender.html" class="block py-2 px-4 rounded hover:bg-gray-700 text-white">
+                                    <i class="far fa-calendar-alt text-white"></i> Calendar View
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="request_appointment.html"
+                                    class="block py-2 px-4 rounded hover:bg-gray-700 text-white">
+                                    <i class="fas fa-calendar-check text-white"></i> Request Appointment
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="mb-4">
+                        <a href="prescription.html" class="block py-2 px-4 rounded hover:bg-gray-700 text-white">
+                            <i class="fas fa-prescription-bottle-alt text-white"></i> Prescription
+                        </a>
+                    </li>
+                    <li class="mb-4">
+                        <a href="#" class="block py-2 px-4 rounded hover:bg-gray-700 text-white"
+                            onclick="toggleDropdown('labtests')">
+                            <i class="fas fa-vials text-white"></i> Lab Tests <i id="labTestsIcon"
+                                class="fas fa-plus text-white"></i>
+                        </a>
+                        <!-- Dropdown menu -->
+                        <ul id="labtestsDropdown" class="ml-4 hidden">
+                            <li class="mb-2">
+                                <a href="lab_tests.html" class="block py-2 px-4 rounded hover:bg-gray-700 text-white">
+                                    <i class="fas fa-flask text-white"></i> Lab Reports
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="add_lab_report.html"
+                                    class="block py-2 px-4 rounded hover:bg-gray-700 text-white">
+                                    <i class="fas fa-notes-medical text-white"></i> Add Lab Report
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="templete_report.html"
+                                    class="block py-2 px-4 rounded hover:bg-gray-700 text-white">
+                                    <i class="fas fa-file-prescription text-white"></i> Template
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="mb-4">
+                        <a href="#" class="block py-2 px-4 rounded hover:bg-gray-700 text-white"
+                            onclick="toggleDropdown('report')">
+                            <i class="fas fa-chart-bar text-white"></i> Report <i id="reportIcon"
+                                class="fas fa-plus text-white"></i>
+                        </a>
+                        <!-- Dropdown menu -->
+                        <ul id="reportDropdown" class="ml-4 hidden">
+                            <li class="mb-2">
+                                <a href="birth_report.html"
+                                    class="block py-2 px-4 rounded hover:bg-gray-700 text-white">
+                                    <i class="fas fa-baby text-white"></i> Birth Report
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="operation_report.html"
+                                    class="block py-2 px-4 rounded hover:bg-gray-700 text-white">
+                                    <i class="fas fa-notes-medical text-white"></i> Operation Report
+                                </a>
+                            </li>
+                            <li class="mb-2">
+                                <a href="expire_report.html"
+                                    class="block py-2 px-4 rounded hover:bg-gray-700 text-white">
+                                    <i class="fas fa-procedures text-white"></i> Expire Report
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="mb-4">
+                        <a href="email.html" class="block py-2 px-4 rounded hover:bg-gray-700 text-white"
+                            onclick="toggleDropdown('email')">
+                            <i class="fas fa-envelope text-white"></i> Email <i id="emailIcon"
+                                class="fas fa-plus text-white"></i>
+                        </a>
+                        <!-- Dropdown menu -->
+                        <ul id="email.html" class="ml-4 hidden">
+                            <li class="mb-2">
+                                <a href="#" class="block py-2 px-4 rounded hover:bg-gray-700 text-white">
+                                    <i class="fas fa-envelope-open-text text-white"></i> New Email
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="profile.html" class="block py-2 px-4 rounded hover:bg-gray-700 text-white">
+                            <i class="fas fa-user text-white"></i> Profile
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="w-4/5 p-6">
+            <section class="bg-white p-6 rounded-lg shadow-lg">
+                <h2 class="text-2xl font-bold mb-6">Documents</h2>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white">
+                        <thead>
+                            <tr>
+                                <th
+                                    class="px-6 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
+                                    ID
+                                </th>
+                                <th
+                                    class="px-6 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
+                                    Title
+                                </th>
+                                <th
+                                    class="px-6 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
+                                    Category
+                                </th>
+                                <th
+                                    class="px-6 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
+                                    Date
+                                </th>
+                                <th
+                                    class="px-6 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs leading-4 font-medium text-gray-600 uppercase tracking-wider">
+                                    Status
+                                </th>
+                                <th class="px-6 py-3 border-b-2 border-gray-200 bg-gray-100"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="border-t border-gray-200">
+                                    <span class="text-gray-700 px-6 py-3 flex items-center">1</span>
+                                </td>
+                                <td class="border-t border-gray-200">
+                                    <span class="text-gray-700 px-6 py-3 flex items-center">Patient Report</span>
+                                </td>
+                                <td class="border-t border-gray-200">
+                                    <span class="text-gray-700 px-6 py-3 flex items-center">Medical</span>
+                                </td>
+                                <td class="border-t border-gray-200">
+                                    <span class="text-gray-700 px-6 py-3 flex items-center">2024-06-15</span>
+                                </td>
+                                <td class="border-t border-gray-200">
+                                    <span class="text-gray-700 px-6 py-3 flex items-center">Completed</span>
+                                </td>
+                                <td class="border-t border-gray-200 w-px">
+                                    <button
+                                        class="bg-blue-500 hover:bg-blue-700 text-white py-1 px-3 rounded focus:outline-none focus:shadow-outline">
+                                        View
+                                    </button>
+                                </td>
+                            </tr>
+                            <!-- More rows here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        function toggleDropdown(menuId) {
+            const icon = document.getElementById(`${menuId}Icon`);
+            const dropdown = document.getElementById(`${menuId}Dropdown`);
+            if (icon.classList.contains('fa-plus')) {
+                icon.classList.remove('fa-plus');
+                icon.classList.add('fa-minus');
+            } else {
+                icon.classList.remove('fa-minus');
+                icon.classList.add('fa-plus');
+            }
+            dropdown.classList.toggle('hidden');
+        }
+    </script>
+
+</body>
+
+</html>
